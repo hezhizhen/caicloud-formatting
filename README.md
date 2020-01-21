@@ -39,8 +39,9 @@ Here's an idea about how to use `git pre-commit` to automatically format our cod
 
 #### Download binary
 
-1. Visit [here](https://github.com/hezhizhen/caicloud-formatting/releases) and download the latest one that is compatible to your OS
-2. Save it to a directory like `tools/`
+1. Visit [here](https://github.com/hezhizhen/caicloud-formatting/releases) and download the latest one that is compatible with your OS
+2. Unzip it `unzip caicloud-formatting-1.0.0.zip` and enter it `cd caicloud-formatting-1.0.0`
+3. build it and save to somewhere in the repository `go build -o $GOPATH/src/github.com/caicloud/config-admin/tools/caicloud-formatting`
 
 #### Add `pre-commit`
 

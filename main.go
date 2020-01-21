@@ -1,17 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/hezhizhen/caicloud-formatting/imports"
-
-	"k8s.io/klog"
 )
 
-// e.g.: go run format/main.go .
+// e.g.: go run main.go .
 func main() {
 	// the default root is the current directory, but you can specify it
 	root := "."
@@ -20,7 +19,7 @@ func main() {
 	}
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			klog.Error(err)
+			fmt.Println(err)
 			return nil
 		}
 		// skip some files and directories
