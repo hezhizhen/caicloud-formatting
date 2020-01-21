@@ -1,10 +1,6 @@
 # caicloud-formatting
 
-## imports
-
-Adjust the imports order to satisfy our [convention](https://github.com/caicloud/engineering/blob/master/guidelines/golang.md#order).
-
-### Getting Started
+## Getting Started
 
 Suppose you have `caicloud-formatting` and `config-admin` in your GOPATH and both of them are up to date, and you are currently in the root of the latter repository.
 
@@ -16,6 +12,10 @@ FORMATTING := $(GOPATH)/src/github.com/hezhizhen/caicloud-formatting
 format:
     @go run $(FORMATTING)/main.go
 ```
+
+## imports
+
+Adjust the imports order to satisfy our [convention](https://github.com/caicloud/engineering/blob/master/guidelines/golang.md#order).
 
 ### Usage
 
@@ -29,7 +29,7 @@ A file will be skipped if it is:
 
 Besides, commented import lines will be removed to make imports clean.
 
-### Git integration
+## Git integration
 
 Here's an idea about how to use `git pre-commit` to automatically format our code.
 
@@ -37,13 +37,13 @@ Here's an idea about how to use `git pre-commit` to automatically format our cod
 2. Add a `pre-commit` file to `.git/hooks` directory and make it executable
 3. Add and commit as usual
 
-#### Download binary
+### Download binary
 
 1. Visit [here](https://github.com/hezhizhen/caicloud-formatting/releases) and download the latest one that is compatible with your OS
 2. Save to somewhere in the repository (e.g.: `tools/caicloud-formatting`)
 3. Give it executable permission if it isn't exectuable `chmod +x tools/caicloud-formatting`
 
-#### Add `pre-commit`
+### Add `pre-commit`
 
 Save the following code to a file named `pre-commit` in the `.git/hooks` directory:
 
@@ -62,3 +62,13 @@ Don't forget to make it executable: `chmod +x .git/hooks/pre-commit`, Or you'll 
 hint: The 'pre-commit' hook was ignored because it's not set as executable.
 hint: You can disable this warning with `git config advice.ignoredHook false`
 ```
+
+### (Optional) Configure git hooks path
+
+To share git hooks with your team, it's better to configure a different path `.githooks` for git hooks instead of using the default one `.git/hooks`.
+
+```sh
+git config core.hooksPath .githooks
+```
+
+Then add the `pre-commit` hook to the directory. Maybe you can also put the binary here.
