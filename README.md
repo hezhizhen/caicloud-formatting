@@ -67,6 +67,10 @@ hint: You can disable this warning with `git config advice.ignoredHook false`
 
 NOTE: there is a file `install` in the root which will do the adding stuff automatically by simply running `bash install` in the root of your repository.
 
+1. `wget https://raw.githubusercontent.com/hezhizhen/caicloud-formatting/master/install`
+2. `bash install`
+3. `rm install`
+
 ### (Optional) Configure git hooks path
 
 To share git hooks with your team, it's better to configure a different path of git hooks `.githooks` instead of using the default one `.git/hooks`.
