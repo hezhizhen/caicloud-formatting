@@ -41,6 +41,7 @@ Here's an idea about how to use `git pre-commit` to automatically format our cod
 
 1. Visit [here](https://github.com/hezhizhen/caicloud-formatting/releases) and download the latest one that is compatible with your OS
 2. Save to somewhere in the repository (e.g.: `tools/caicloud-formatting`)
+3. Give it executable permission if it isn't exectuable `chmod +x tools/caicloud-formatting`
 
 #### Add `pre-commit`
 
