@@ -12,7 +12,7 @@ Suppose you have `caicloud-formatting` and `config-admin` in your GOPATH and bot
 2. Add a Makefile target which actually executes the command above, and `make` it.
 
 ```makefile
-FORMATTING := $(GOPATH)/src/github.com/hezhizhen/caicloud-formattiing
+FORMATTING := $(GOPATH)/src/github.com/hezhizhen/caicloud-formatting
 format:
     @go run $(FORMATTING)/main.go
 ```
@@ -49,7 +49,7 @@ Save the following code to a file named `pre-commit` in the `.git/hooks` directo
 ```sh
 ./tools/caicloud-formatting .
 if [[ -n $(git diff) ]]; then
-    echo "Imports have been re-ordered. Please add and commit again."
+    echo "Imports have been changed. Please commit again."
     exit 1
 fi
 exit 0
