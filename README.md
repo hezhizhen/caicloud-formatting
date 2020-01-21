@@ -65,10 +65,11 @@ hint: You can disable this warning with `git config advice.ignoredHook false`
 
 ### (Optional) Configure git hooks path
 
-To share git hooks with your team, it's better to configure a different path `.githooks` for git hooks instead of using the default one `.git/hooks`.
+To share git hooks with your team, it's better to configure a different path of git hooks `.githooks` instead of using the default one `.git/hooks`.
 
 ```sh
 git config core.hooksPath .githooks
 ```
 
-Then add the `pre-commit` hook to the directory. Maybe you can also put the binary here.
+Then add the `pre-commit` hook to the directory. Maybe you can also put the binary here (If so, don't forget to change the path of `caicloud-formatting` in `pre-commit`).
+
