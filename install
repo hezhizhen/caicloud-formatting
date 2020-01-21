@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo '#!/bin/sh
+
+caicloud-formatting .
+if [[ -n $(git diff) ]]; then
+    echo "Imports have been changed. Please commit again."
+    exit 1
+fi
+exit 0' > .git/hooks/pre-commit
+
+chmod +x .git/hooks/pre-commit

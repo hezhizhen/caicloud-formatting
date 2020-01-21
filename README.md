@@ -33,22 +33,24 @@ Besides, commented import lines will be removed to make imports clean.
 
 Here's an idea about how to use `git pre-commit` to automatically format our code.
 
-1. Download binary from `hezhizhen/caicloud-formatting` and save it to somewhere in the repository
+1. Install binary from `hezhizhen/caicloud-formatting`
 2. Add a `pre-commit` file to `.git/hooks` directory and make it executable
 3. Add and commit as usual
 
-### Download binary
+### Install binary
 
-1. Visit [here](https://github.com/hezhizhen/caicloud-formatting/releases) and download the latest one that is compatible with your OS
-2. Save to somewhere in the repository (e.g.: `tools/caicloud-formatting`)
-3. Give it executable permission if it isn't exectuable `chmod +x tools/caicloud-formatting`
+1. Get the latest code: `go get -u -v github.com/hezhizhen/caicloud-formatting`
+2. Enter the repo: `cd $GOPATH/src/github.com/hezhizhen/caicloud-formatting`
+3. install it: `go install ./...`
 
 ### Add `pre-commit`
 
 Save the following code to a file named `pre-commit` in the `.git/hooks` directory:
 
 ```sh
-./tools/caicloud-formatting .
+#!/bin/sh
+
+caicloud-formatting .
 if [[ -n $(git diff) ]]; then
     echo "Imports have been changed. Please commit again."
     exit 1
@@ -62,6 +64,8 @@ Don't forget to make it executable: `chmod +x .git/hooks/pre-commit`, Or you'll 
 hint: The 'pre-commit' hook was ignored because it's not set as executable.
 hint: You can disable this warning with `git config advice.ignoredHook false`
 ```
+
+NOTE: there is a file `install` in the root which will do the adding stuff automatically by simply running `bash install` in the root of your repository.
 
 ### (Optional) Configure git hooks path
 
