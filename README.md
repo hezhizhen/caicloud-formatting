@@ -40,15 +40,14 @@ Here's an idea about how to use `git pre-commit` to automatically format our cod
 #### Download binary
 
 1. Visit [here](https://github.com/hezhizhen/caicloud-formatting/releases) and download the latest one that is compatible with your OS
-2. Unzip it `unzip caicloud-formatting-1.0.0.zip` and enter it `cd caicloud-formatting-1.0.0`
-3. build it and save to somewhere in the repository `go build -o $GOPATH/src/github.com/caicloud/config-admin/tools/caicloud-formatting`
+2. Save to somewhere in the repository (e.g.: `tools/caicloud-formatting`)
 
 #### Add `pre-commit`
 
 Save the following code to a file named `pre-commit` in the `.git/hooks` directory:
 
 ```sh
-go run tools/main.go .
+./tools/caicloud-formatting .
 if [[ -n $(git diff) ]]; then
     echo "Imports have been re-ordered. Please add and commit again."
     exit 1
