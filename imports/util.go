@@ -49,18 +49,18 @@ func extractPackage(line string) (pkg, origin string) {
 }
 
 // local is the name of the current repository.
-// e.g.: /Users/caicloud/go/src/github.com/caicloud/config-admin -> config-admin
+// e.g.: /Users/caicloud/go/src/github.com/caicloud/config-admin -> github.com/caicloud/config-admin
 var local = func() string {
 	dir, err := os.Getwd()
 	Check(err)
-	parts := strings.Split(dir, "github.com/caicloud/")
-	return strings.Split(parts[1], "/")[0]
+	gopath := os.Getenv("GOPATH")
+	return strings.TrimPrefix(dir, gopath+"/src/")
 }()
 
 // classify finds the correct category for the imported package.
 func classify(pkg string) string {
 	parts := strings.Split(pkg, "/")
-	// standard libraries may have zero, one or two slashes, but none have a dot
+	// standard libraries may have zero, one or two slashes, but none have a dot;
 	// other packages must be hosted in somewhere, which means the first part
 	// has a dot
 	if !strings.Contains(parts[0], ".") {
