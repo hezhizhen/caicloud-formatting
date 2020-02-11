@@ -78,3 +78,20 @@ func classify(pkg string) string {
 	}
 	return "company"
 }
+
+// insert inserts the line to the list to make it in an ascending order.
+func insert(lines []string, line string) []string {
+	if len(lines) == 0 {
+		return []string{line}
+	}
+	var ret []string
+	pkg, origin := extractPackage(line)
+	for _, l := range lines {
+		p, o := extractPackage(l)
+		if p > pkg {
+			ret = append(ret, origin)
+		}
+		ret = append(ret, o)
+	}
+	return ret
+}

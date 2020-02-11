@@ -19,13 +19,13 @@ func (p *Packages) Add(line string) {
 	category := classify(pkg)
 	switch category {
 	case "std":
-		p.Std = append(p.Std, origin)
+		p.Std = insert(p.Std, origin)
 	case "local":
-		p.Local = append(p.Local, origin)
+		p.Local = insert(p.Local, origin)
 	case "company":
-		p.Company = append(p.Company, origin)
+		p.Company = insert(p.Company, origin)
 	case "others":
-		p.Others = append(p.Others, origin)
+		p.Others = insert(p.Others, origin)
 	}
 }
 
