@@ -54,6 +54,9 @@ var local = func() string {
 	dir, err := os.Getwd()
 	Check(err)
 	gopath := os.Getenv("GOPATH")
+	if strings.HasSuffix(gopath, "/") {
+		gopath = strings.TrimSuffix(gopath, "/")
+	}
 	return strings.TrimPrefix(dir, gopath+"/src/")
 }()
 
@@ -86,12 +89,17 @@ func insert(lines []string, line string) []string {
 	}
 	var ret []string
 	pkg, origin := extractPackage(line)
+	added := false
 	for _, l := range lines {
 		p, o := extractPackage(l)
-		if p > pkg {
+		if p > pkg && !added {
 			ret = append(ret, origin)
+			added = true
 		}
 		ret = append(ret, o)
+	}
+	if !added {
+		ret = append(ret, origin)
 	}
 	return ret
 }
